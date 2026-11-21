@@ -159,6 +159,13 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .stats b{display:block;font:800 36px/1.2 Alexandria;color:var(--acc)}
 .stats span{color:var(--mute);font-size:14px}
 
+.arch.neon{background:#000;display:grid;place-items:center}
+.arch.neon img{width:118%;max-width:none;filter:drop-shadow(0 0 18px rgba(200,255,60,.35));animation:glow 3s ease-in-out infinite}
+@keyframes glow{50%{filter:drop-shadow(0 0 32px rgba(200,255,60,.6))}}
+.proj.feature{margin-top:32px}
+.logos3{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+.logos3 img{border-radius:18px;background:#000;aspect-ratio:1;object-fit:cover}
+@media(max-width:700px){.logos3{grid-template-columns:repeat(2,1fr);gap:10px}}
 /* contact */
 .contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:36px;box-shadow:var(--shadow)}
 @media(max-width:860px){.contact{grid-template-columns:1fr;padding:24px;gap:24px}}
@@ -214,8 +221,8 @@ footer p{width:100%;font-size:13px;opacity:.75;border-top:1px solid rgba(255,255
       </div>
     </div>
     <div class="visual">
-      <div class="arch"><video src="m/hero.mp4" poster="m/reel-qr.webp" autoplay muted loop playsinline></video></div>
-      <div class="float f1"><span class="dot">🛍️</span><b style="display:inline">طلب جديد</b><br><small style="color:var(--mute)">جاي من إعلان الريل</small></div>
+      <div class="arch neon"><img src="m/cart-e.webp" alt="لوجو كارتريدج"></div>
+      <div class="float f1"><span class="dot">🛍️</span><b style="display:inline">طلب جديد</b><br><small style="color:var(--mute)">جاي من إعلان انستجرام</small></div>
       <div class="float f2"><b>الطلبات هذا الأسبوع</b><div class="bars"><span style="height:30%"></span><span style="height:45%"></span><span style="height:40%"></span><span style="height:70%"></span><span style="height:100%"></span></div></div>
     </div>
   </div>
@@ -231,10 +238,9 @@ footer p{width:100%;font-size:13px;opacity:.75;border-top:1px solid rgba(255,255
       <p>بشتغل بسرعة، وبسلّم في الميعاد، وبعدّل لحد ما ترضى.</p>
     </div>
     <div class="timeline reveal">
-      <div><div><b>طيف للعطور</b><small>ريلز، بوستات، لوجو، وموقع متجر كامل</small></div><span>01</span></div>
-      <div><div><b>كارتريدج</b><small>لوجو وهوية لمحل ألعاب فيديو</small></div><span>02</span></div>
-      <div><div><b>إعلانات بصوت</b><small>صوت مصري وسعودي، ومزيكا ومؤثرات</small></div><span>03</span></div>
-      <div><div><b>متاح دلوقتي</b><small>لمحلات العطور والكافيهات والمطاعم والبراندات الصغيرة</small></div><span>04</span></div>
+      <div><div><b>كارتريدج</b><small>لوجو وهوية لمحل ألعاب فيديو</small></div><span>01</span></div>
+      <div><div><b>إعلانات بصوت</b><small>صوت مصري وسعودي، ومزيكا ومؤثرات</small></div><span>02</span></div>
+      <div><div><b>متاح دلوقتي</b><small>لمحلات العطور والكافيهات والمطاعم والبراندات الصغيرة</small></div><span>03</span></div>
     </div>
   </div>
 </section>
@@ -284,48 +290,18 @@ footer p{width:100%;font-size:13px;opacity:.75;border-top:1px solid rgba(255,255
   <div class="wrap">
     <span class="eyebrow">أعمالي</span>
     <h2 class="h2">مشاريع مختارة</h2>
-    <p class="sub">شغل حقيقي اتعمل لمحلات حقيقية. دوس على أي ريل يشتغل.</p>
-    <div class="filters">
-      <button class="on" data-f="all">الكل</button><button data-f="reel">ريلز</button><button data-f="post">بوستات</button><button data-f="brand">لوجو</button><button data-f="web">مواقع</button>
-    </div>
-    <div class="projects">
-      <article class="proj" data-k="reel"><div class="media v"><video src="m/reel-qr.mp4" poster="m/reel-qr.webp" playsinline preload="none"></video><div class="play"><i></i></div></div>
-        <div class="body"><span class="tag">ريل كوميدي · طيف</span><h3>«في كل حتة»</h3><p>الكيو آر بتاع المحل لازق في المترو والمكتب والفرح. فكرة بتضحّك وبتفكّر الزبون يطلب.</p><div class="chips"><span>صوت مصري</span><span>موشن</span><span>٣٥ ثانية</span></div></div></article>
-      <article class="proj" data-k="reel"><div class="media v"><video src="m/reel-pain.mp4" poster="m/reel-pain.webp" playsinline preload="none"></video><div class="play"><i></i></div></div>
-        <div class="body"><span class="tag">إعلان مشكلة وحل · طيف</span><h3>«مبلغ وقدره؟»</h3><p>بيبدأ بأكتر حاجة بتضايق الزبون، سعر العطر الأصلي، وبيقفل بالعرض.</p><div class="chips"><span>صوت مصري</span><span>٣٠ ثانية</span></div></div></article>
-      <article class="proj" data-k="reel"><div class="media v"><video src="m/reel-intro.mp4" poster="m/reel-intro.webp" playsinline preload="none"></video><div class="play"><i></i></div></div>
-        <div class="body"><span class="tag">تعريف بالبراند · طيف</span><h3>إزاي تطلب من طيف</h3><p>ريل بيشرح المحل والموقع وخطوات الطلب، في أقل من دقيقة.</p><div class="chips"><span>صوت</span><span>شرح</span><span>٤٤ ثانية</span></div></div></article>
-      <article class="proj" data-k="reel"><div class="media v"><video src="m/reel-friday.mp4" poster="m/reel-friday.webp" playsinline preload="none"></video><div class="play"><i></i></div></div>
-        <div class="body"><span class="tag">ريل عرض · طيف</span><h3>عروض الجمعة البيضاء</h3><p>ريل سريع ١٥ ثانية للستوري والإعلان الممول.</p><div class="chips"><span>صوت</span><span>١٥ ثانية</span></div></div></article>
-      <article class="proj" data-k="web"><a class="media wide" href="https://omaraboeldahab09.github.io/perfumebytaif/" target="_blank" rel="noopener"><img src="m/site-desktop.webp" alt="موقع طيف"></a>
-        <div class="body"><span class="tag">موقع متجر · طيف</span><h3>موقع بيستقبل الطلبات</h3><p>سلة وعروض تلقائية زي «٣ بسعر ٢»، عربي وإنجليزي، ولوحة طلبات وفواتير لصاحب المحل.</p><div class="chips"><span>موبايل أولًا</span><span>استضافة ببلاش</span></div><a class="link" href="https://omaraboeldahab09.github.io/perfumebytaif/" target="_blank" rel="noopener">افتح الموقع ↗</a></div></article>
-      <article class="proj" data-k="brand"><div class="media wide"><img src="m/logo-taif.webp" alt="لوجو طيف"></div>
-        <div class="body"><span class="tag">لوجو · طيف</span><h3>هوية طيف للعطور</h3><p>٦ اتجاهات للوجو بالخط العربي، من الكلاسيكي للمودرن.</p></div></article>
-      <article class="proj" data-k="brand"><div class="media wide" style="background:#000"><img src="m/logo-cartridge.webp" alt="لوجو كارتريدج" style="object-fit:contain"></div>
-        <div class="body"><span class="tag">لوجو · كارتريدج</span><h3>محل ألعاب فيديو</h3><p>لوجو بطابع نيون وجيمنج، بالعربي والإنجليزي.</p></div></article>
-      <article class="proj" data-k="post"><div class="media"><img src="m/post-9pm.webp" alt="بوست 9PM"></div>
-        <div class="body"><span class="tag">بوست منتج</span><h3>مجموعة 9PM</h3><p>بوست وصول منتج جديد بشكل فاخر.</p></div></article>
-      <article class="proj" data-k="post"><div class="media"><img src="m/post-match.webp" alt="عرض ٣ بسعر ٢"></div>
-        <div class="body"><span class="tag">بوست عرض</span><h3>عرض ٣ بسعر ٢</h3><p>العرض واضح من أول نظرة: السعر والتوفير.</p></div></article>
-      <article class="proj" data-k="post"><div class="media"><img src="m/post-friday.webp" alt="عروض الجمعة البيضاء"></div>
-        <div class="body"><span class="tag">بوست موسم</span><h3>الجمعة البيضاء</h3><p>بوست موسم عروض بهوية المحل.</p></div></article>
-      <article class="proj" data-k="post"><div class="media"><img src="m/post-hawas.webp" alt="هواس آيس"></div>
-        <div class="body"><span class="tag">بوست منتج</span><h3>هواس آيس</h3><p>تصوير منتج في إطار القوس المميز للبراند.</p></div></article>
-      <article class="proj" data-k="post"><div class="media"><img src="m/post-branch.webp" alt="الفرع الجديد"></div>
-        <div class="body"><span class="tag">بوست إعلان</span><h3>افتتاح الفرع الجديد</h3><p>تشويق للافتتاح قبل ما يتعلن العنوان.</p></div></article>
-    </div>
-  </div>
-</section>
-
-<section style="padding-top:0">
-  <div class="wrap">
-    <span class="eyebrow">بالأرقام</span>
-    <h2 class="h2">لمحة سريعة</h2>
-    <div class="stats">
-      <div class="reveal"><b data-n="8">+8</b><span>ريلز موشن بصوت</span></div>
-      <div class="reveal"><b data-n="10">+10</b><span>بوستات وستوريز</span></div>
-      <div class="reveal"><b data-n="2">2</b><span>هوية ولوجو</span></div>
-      <div class="reveal"><b data-n="1">1</b><span>متجر أونلاين شغّال</span></div>
+    <p class="sub">هوية كاملة لمحل ألعاب فيديو: من الفكرة لحد اللوجو النهائي.</p>
+    <article class="proj feature reveal">
+      <div class="media" style="background:#000"><img src="m/logo-cartridge.webp" alt="اتجاهات لوجو كارتريدج" style="aspect-ratio:3/1;object-fit:contain"></div>
+      <div class="body"><span class="tag">لوجو وهوية · كارتريدج</span><h3>كارتريدج، محل ألعاب فيديو</h3>
+        <p>اتجاهات مختلفة للوجو بالعربي والإنجليزي: نيون، وبيكسل، وشكل كارت الألعاب القديم. كلها بنفس اللون الأخضر الفسفوري عشان المحل يتعرف من بعيد.</p>
+        <div class="chips"><span>لوجو</span><span>هوية بصرية</span><span>عربي وإنجليزي</span></div></div>
+    </article>
+    <div class="logos3">
+      <img class="reveal" src="m/cart-e.webp" alt="لوجو كارتريدج نيون">
+      <img class="reveal" src="m/cart-b.webp" alt="لوجو كارتريدج على شكل كارت">
+      <img class="reveal" src="m/cart-d.webp" alt="لوجو كارتريدج عريض">
+      <img class="reveal" src="m/cart-f.webp" alt="لوجو كارتريدج بيكسل">
     </div>
   </div>
 </section>
@@ -381,21 +357,6 @@ document.getElementById("theme").onclick=()=>{
   r.dataset.theme = dark ? "light" : "dark";
   try{localStorage.setItem("theme",r.dataset.theme)}catch(e){}
 };
-
-/* reels */
-document.querySelectorAll(".proj .media.v").forEach(m=>{
-  const v=m.querySelector("video"), p=m.closest(".proj");
-  m.addEventListener("click",()=>{ if(!v.paused) return;
-    document.querySelectorAll(".proj video").forEach(o=>{ if(o!==v){o.pause();o.closest(".proj").classList.remove("on");} });
-    v.play(); v.controls=true; p.classList.add("on"); });
-  v.addEventListener("ended",()=>{ p.classList.remove("on"); v.controls=false; v.currentTime=0; });
-});
-
-/* filters */
-document.querySelectorAll(".filters button").forEach(b=>b.onclick=()=>{
-  document.querySelectorAll(".filters button").forEach(x=>x.classList.toggle("on",x===b));
-  document.querySelectorAll(".proj").forEach(p=>p.classList.toggle("hide", b.dataset.f!=="all" && p.dataset.k!==b.dataset.f));
-});
 
 /* reveal + to-top */
 const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);} }),{threshold:.12});
