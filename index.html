@@ -169,6 +169,25 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 
 .proj.feature{margin-top:18px}
 .projects{margin-top:32px}
+/* motion */
+.marquee{overflow:hidden;background:var(--acc);color:var(--on-acc);padding:14px 0;direction:ltr}
+.marquee .track{display:flex;width:max-content;gap:28px;padding-inline:14px;align-items:center;font:800 clamp(18px,3vw,26px) var(--f-display);white-space:nowrap;will-change:transform}
+.marquee .track b{font-weight:400;opacity:.7}
+.h2 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.15em;margin-bottom:-.15em}
+.h2 .wi{display:inline-block}
+#services{transform-origin:50% 0}
+.steps{position:relative;padding-top:22px}
+.steps-line{position:absolute;top:0;inset-inline:0;height:2px;background:var(--line);border-radius:2px;overflow:hidden}
+.steps-line i{display:block;height:100%;background:var(--acc)}
+.steps > div > span{display:inline-block}
+.proj .media{overflow:hidden}
+.curtain{position:fixed;inset:0;z-index:100;background:var(--acc);display:grid;place-content:center;justify-items:center;gap:18px;clip-path:inset(0 0 0 0)}
+.c-logo{font:400 clamp(64px,14vw,120px)/1 var(--f-logo);color:var(--on-acc)}
+.c-bar{width:120px;height:3px;background:color-mix(in srgb,var(--on-acc) 30%,transparent);border-radius:3px;overflow:hidden}
+.c-bar i{display:block;height:100%;background:var(--on-acc);transform:scaleX(0);transform-origin:right}
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+::view-transition-new(root){animation:vt-circle .7s cubic-bezier(.7,0,.2,1)}
+@keyframes vt-circle{from{clip-path:circle(0 at var(--vx,50%) var(--vy,0))}to{clip-path:circle(150vmax at var(--vx,50%) var(--vy,0))}}
 /* contact */
 .contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:36px;box-shadow:var(--shadow)}
 @media(max-width:860px){.contact{grid-template-columns:1fr;padding:24px;gap:24px}}
@@ -232,6 +251,8 @@ footer p{width:100%;font-size:13px;opacity:.75;border-top:1px solid rgba(255,255
   </div>
 </header>
 
+<div class="marquee" aria-hidden="true"><div class="track"><span>ريلز موشن</span><b>✦</b><span>إعلانات بصوت</span><b>✦</b><span>بوستات وستوريز</span><b>✦</b><span>لوجو وهوية</span><b>✦</b><span>مواقع بتستقبل طلبات</span><b>✦</b></div></div>
+
 <section id="about">
   <div class="wrap about">
     <div class="reveal">
@@ -281,7 +302,7 @@ footer p{width:100%;font-size:13px;opacity:.75;border-top:1px solid rgba(255,255
       </article>
     </div>
 
-    <div class="steps">
+    <div class="steps"><div class="steps-line" aria-hidden="true"><i></i></div>
       <div class="reveal"><span>01</span><h3>نفهم الفكرة</h3><p>تبعتلي اسم المحل وإيه اللي عايز تبيعه.</p></div>
       <div class="reveal"><span>02</span><h3>السكريبت والشكل</h3><p>أبعتلك الفكرة وشكل مبدئي خلال يوم.</p></div>
       <div class="reveal"><span>03</span><h3>التنفيذ</h3><p>صوت ومزيكا وحركة، وأوريك أول نسخة.</p></div>
@@ -364,11 +385,17 @@ document.getElementById("form").addEventListener("submit",e=>{
 });
 
 /* theme */
-document.getElementById("theme").onclick=()=>{
+document.getElementById("theme").onclick=e=>{
   const r=document.documentElement;
-  const dark = r.dataset.theme ? r.dataset.theme==="dark" : !matchMedia("(prefers-color-scheme: light)").matches;
-  r.dataset.theme = dark ? "light" : "dark";
-  try{localStorage.setItem("theme",r.dataset.theme)}catch(e){}
+  const flip=()=>{
+    const dark = r.dataset.theme ? r.dataset.theme==="dark" : !matchMedia("(prefers-color-scheme: light)").matches;
+    r.dataset.theme = dark ? "light" : "dark";
+    try{localStorage.setItem("theme",r.dataset.theme)}catch(err){}
+  };
+  if(!document.startViewTransition || matchMedia("(prefers-reduced-motion: reduce)").matches) return flip();
+  const b=e.currentTarget.getBoundingClientRect();
+  r.style.setProperty("--vx",(b.left+b.width/2)+"px"); r.style.setProperty("--vy",(b.top+b.height/2)+"px");
+  document.startViewTransition(flip);
 };
 
 /* reels */
@@ -388,40 +415,113 @@ addEventListener("scroll",()=>toTop.classList.toggle("show",scrollY>600),{passiv
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
 (function(){
-  const reveals=document.querySelectorAll(".reveal");
   if(!window.gsap||!window.ScrollTrigger) return;
   gsap.registerPlugin(ScrollTrigger);
+  const $=(q,c=document)=>c.querySelector(q), $$=(q,c=document)=>[...c.querySelectorAll(q)];
   const mm=gsap.matchMedia();
-    mm.add("(prefers-reduced-motion: no-preference)",()=>{
-    // CSS reveal hands over to GSAP
-        gsap.set(reveals,{autoAlpha:0,y:40});
 
-    // hero intro
-    const tl=gsap.timeline({defaults:{ease:"power3.out",duration:.8}});
-    tl.from(".hero .pill,.hero .role",{autoAlpha:0,y:20,stagger:.1})
-      .from(".hero h1 .ln",{autoAlpha:0,y:50,stagger:.12,duration:.9},"-=.4")
-      .from(".hero .lead,.hero .cta,.hero .social",{autoAlpha:0,y:24,stagger:.1},"-=.5")
-      .from(".me img",{autoAlpha:0,y:80,scale:.94,duration:1.1,ease:"expo.out"},.2)
-      .from(".f1,.f2",{autoAlpha:0,scale:.6,stagger:.15,ease:"back.out(1.8)",duration:.7},"-=.5")
-      .from(".f2 .bars span",{scaleY:0,transformOrigin:"bottom",stagger:.08,duration:.5},"-=.3");
+  // marquee runs for everyone, slower when motion is reduced
+  const track=$(".marquee .track");
+  let mq;
+  if(track){ track.innerHTML+=track.innerHTML; mq=gsap.fromTo(track,{xPercent:-50},{xPercent:0,ease:"none",duration:28,repeat:-1}); }
 
-    // idle float
-    gsap.to(".f1",{y:-10,duration:2.4,repeat:-1,yoyo:true,ease:"sine.inOut",delay:1.6});
-    gsap.to(".f2",{y:10,duration:2.8,repeat:-1,yoyo:true,ease:"sine.inOut",delay:1.8});
+  mm.add("(prefers-reduced-motion: reduce)",()=>{ mq&&mq.timeScale(.3); });
 
-    // parallax on scroll
-    gsap.to(".me",{y:-60,ease:"none",scrollTrigger:{trigger:".hero",start:"top top",end:"bottom top",scrub:1}});
-    gsap.to(".f1",{x:30,ease:"none",scrollTrigger:{trigger:".hero",start:"top top",end:"bottom top",scrub:1}});
-    gsap.to(".f2",{x:-30,ease:"none",scrollTrigger:{trigger:".hero",start:"top top",end:"bottom top",scrub:1}});
+  mm.add("(prefers-reduced-motion: no-preference)",()=>{
+    // split headings into words that rise out of a mask
+    $$("section .h2").forEach(h=>{
+      if(h.dataset.split) return; h.dataset.split=1;
+      h.innerHTML=h.textContent.trim().split(/\s+/).map(w=>`<span class="w"><span class="wi">${w}</span></span>`).join(" ");
+    });
 
-    // section headings
-    gsap.utils.toArray("section .h2").forEach(h=>gsap.from(h,{autoAlpha:0,y:30,duration:.8,ease:"power3.out",scrollTrigger:{trigger:h,start:"top 88%",once:true}}));
+    // --- intro curtain ---
+    const cur=document.createElement("div"); cur.className="curtain";
+    cur.innerHTML='<span class="c-logo">عمر</span><span class="c-bar"><i></i></span>';
+    document.body.appendChild(cur);
+    const intro=gsap.timeline({defaults:{ease:"power4.inOut"}});
+    intro.from(".c-logo",{yPercent:100,autoAlpha:0,duration:.7,ease:"power3.out"})
+         .to(".c-bar i",{scaleX:1,duration:.6,ease:"power2.inOut"},"-=.2")
+         .to(".c-logo,.c-bar",{yPercent:-60,autoAlpha:0,duration:.45,ease:"power2.in"})
+         .to(cur,{clipPath:"inset(0 0 100% 0)",duration:.9},"-=.15")
+         .set(cur,{display:"none"});
 
-    // cards in batches
-    ScrollTrigger.batch(reveals,{start:"top 90%",once:true,
-      onEnter:b=>gsap.to(b,{autoAlpha:1,y:0,stagger:.12,duration:.8,ease:"power3.out",overwrite:true})});
+    // --- hero ---
+    intro.from(".hero .pill,.hero .role",{autoAlpha:0,y:20,stagger:.1,duration:.7,ease:"power3.out"},"-=.45")
+      .from(".hero h1 .ln",{yPercent:110,autoAlpha:0,rotate:2,stagger:.12,duration:1,ease:"expo.out"},"<.1")
+      .from(".hero .lead,.hero .cta,.hero .social",{autoAlpha:0,y:24,stagger:.1,duration:.8,ease:"power3.out"},"-=.7")
+      .from(".me img",{autoAlpha:0,y:120,scale:.9,rotate:-3,duration:1.3,ease:"expo.out"},"<-.6")
+      .from(".f1,.f2",{autoAlpha:0,scale:.5,stagger:.15,ease:"back.out(1.8)",duration:.7},"-=.7")
+      .from(".f2 .bars span",{scaleY:0,transformOrigin:"bottom",stagger:.08,duration:.5,ease:"back.out(2)"},"-=.3");
+    gsap.to(".f1",{y:-10,duration:2.4,repeat:-1,yoyo:true,ease:"sine.inOut",delay:3});
+    gsap.to(".f2",{y:10,duration:2.8,repeat:-1,yoyo:true,ease:"sine.inOut",delay:3.2});
+    gsap.to(".me img",{rotate:1.2,transformOrigin:"50% 100%",duration:3,repeat:-1,yoyo:true,ease:"sine.inOut",delay:3});
+
+    const heroST=()=>({trigger:".hero",start:"top top",end:"bottom top",scrub:1});
+    gsap.to(".me",{y:-80,ease:"none",scrollTrigger:heroST()});
+    gsap.to(".hero h1",{y:60,autoAlpha:.2,ease:"none",scrollTrigger:heroST()});
+    gsap.to(".f1",{x:40,ease:"none",scrollTrigger:heroST()});
+    gsap.to(".f2",{x:-40,ease:"none",scrollTrigger:heroST()});
+
+    // --- marquee reacts to scroll speed ---
+    if(mq){
+      const skew=gsap.quickTo(".marquee .track","skewX",{duration:.4,ease:"power3"});
+      ScrollTrigger.create({onUpdate:self=>{
+        const v=self.getVelocity();
+        mq.timeScale(gsap.utils.clamp(1,6,1+Math.abs(v)/300)*(self.direction||1));
+        skew(gsap.utils.clamp(-10,10,v/-200));
+      }});
+      ScrollTrigger.addEventListener("scrollEnd",()=>{ gsap.to(mq,{timeScale:1,duration:.8}); skew(0); });
+    }
+
+    // --- headings: words rise ---
+    $$("section .h2").forEach(h=>gsap.from($$(".wi",h),{yPercent:110,rotate:3,stagger:.06,duration:.9,ease:"expo.out",
+      scrollTrigger:{trigger:h,start:"top 88%",once:true}}));
+    $$("section .eyebrow, section .sub").forEach(e=>gsap.from(e,{autoAlpha:0,y:16,duration:.7,ease:"power3.out",scrollTrigger:{trigger:e,start:"top 90%",once:true}}));
+
+    // --- services panel slides up over the page ---
+    gsap.fromTo("#services",{borderRadius:"56px 56px 0 0",scale:.94},{borderRadius:"0px 0px 0px 0px",scale:1,ease:"none",
+      scrollTrigger:{trigger:"#services",start:"top bottom",end:"top 25%",scrub:true}});
+
+    // --- generic cards ---
+    const cards=$$(".reveal").filter(e=>!e.classList.contains("proj") && !e.classList.contains("contact"));
+    gsap.set(cards,{autoAlpha:0,y:50,rotateX:-12,transformPerspective:800});
+    ScrollTrigger.batch(cards,{start:"top 90%",once:true,
+      onEnter:b=>gsap.to(b,{autoAlpha:1,y:0,rotateX:0,stagger:.12,duration:.9,ease:"power3.out",overwrite:true})});
+
+    // --- process line draws as you scroll ---
+    gsap.from(".steps-line i",{scaleX:0,transformOrigin:"right center",ease:"none",
+      scrollTrigger:{trigger:".steps",start:"top 85%",end:"bottom 60%",scrub:true}});
+    gsap.from(".steps > div > span",{scale:0,stagger:.15,ease:"back.out(3)",duration:.5,scrollTrigger:{trigger:".steps",start:"top 80%",once:true}});
+
+    // --- projects: media wipes open, picture settles ---
+    $$(".proj").forEach(p=>{
+      const m=$(".media",p), inner=$("img,video",m), body=$(".body",p);
+      const t=gsap.timeline({scrollTrigger:{trigger:p,start:"top 88%",once:true}});
+      t.fromTo(m,{clipPath:"inset(100% 0% 0% 0%)"},{clipPath:"inset(0% 0% 0% 0%)",duration:1.1,ease:"expo.out"})
+       .from(inner,{scale:1.3,duration:1.4,ease:"expo.out"},0)
+       .from(body.children,{autoAlpha:0,y:20,stagger:.06,duration:.6,ease:"power3.out"},.35);
+    });
+
+    // --- contact + footer ---
+    gsap.from(".contact",{autoAlpha:0,y:60,scale:.96,duration:1,ease:"expo.out",scrollTrigger:{trigger:".contact",start:"top 85%",once:true}});
+    gsap.from("footer .logo",{yPercent:60,autoAlpha:0,duration:.9,ease:"expo.out",scrollTrigger:{trigger:"footer",start:"top 95%",once:true}});
 
     addEventListener("load",()=>ScrollTrigger.refresh());
+  });
+
+  // desktop-only: magnetic buttons + card tilt
+  mm.add("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",()=>{
+    $$(".btn, .fab, .icon-btn").forEach(el=>{
+      const x=gsap.quickTo(el,"x",{duration:.4,ease:"power3"}), y=gsap.quickTo(el,"y",{duration:.4,ease:"power3"});
+      el.addEventListener("pointermove",e=>{const r=el.getBoundingClientRect(); x((e.clientX-r.left-r.width/2)*.3); y((e.clientY-r.top-r.height/2)*.3);});
+      el.addEventListener("pointerleave",()=>{x(0);y(0);});
+    });
+    $$(".svc, .proj").forEach(c=>{
+      const rx=gsap.quickTo(c,"rotationX",{duration:.5,ease:"power3"}), ry=gsap.quickTo(c,"rotationY",{duration:.5,ease:"power3"});
+      gsap.set(c,{transformPerspective:900});
+      c.addEventListener("pointermove",e=>{const r=c.getBoundingClientRect(); ry(((e.clientX-r.left)/r.width-.5)*8); rx(-((e.clientY-r.top)/r.height-.5)*8);});
+      c.addEventListener("pointerleave",()=>{rx(0);ry(0);});
+    });
   });
 })();
 </script>
