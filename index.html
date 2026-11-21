@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>عمر | إعلانات بتجيب طلبات</title>
+<meta name="description" content="ريلز موشن بصوت، بوستات، لوجوهات ومواقع للمحلات الصغيرة. إعلانات بتجيب طلبات.">
+<meta property="og:title" content="عمر | إعلانات بتجيب طلبات">
+<meta property="og:description" content="ريلز بصوت، بوستات، لوجوهات ومواقع لمحلك.">
+<meta property="og:image" content="m/og.jpg">
+<meta name="theme-color" content="#121110">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#121110; --bg2:#1b1917; --card:#211f1c; --line:#33302b;
+  --ink:#f3ede3; --mute:#a8a093; --acc:#f0b44c; --acc-ink:#1a1408; --wa:#25d366;
+  --r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.75 "IBM Plex Sans Arabic",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:Alexandria,sans-serif;line-height:1.25;font-weight:800}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+section{padding:72px 0}
+.kicker{display:inline-block;font:600 13px/1 "IBM Plex Sans Arabic";color:var(--acc);letter-spacing:.02em;margin-bottom:14px}
+.h2{font-size:clamp(26px,5.5vw,40px);margin-bottom:10px}
+.lead{color:var(--mute);max-width:560px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:rgba(18,17,16,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{font:800 19px Alexandria;text-decoration:none}
+.brand span{color:var(--acc)}
+.navlinks{display:flex;gap:22px;font-size:14px;color:var(--mute)}
+.navlinks a{text-decoration:none}
+.navlinks a:hover{color:var(--ink)}
+@media(max-width:700px){.navlinks{display:none}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;font:600 16px "IBM Plex Sans Arabic";text-decoration:none;border:0;cursor:pointer;transition:transform .15s}
+.btn:active{transform:scale(.97)}
+.btn-wa{background:var(--wa);color:#06260f}
+.btn-ghost{border:1px solid var(--line);color:var(--ink)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-sm{padding:9px 16px;font-size:14px}
+
+/* hero */
+.hero{padding:56px 0 40px}
+.hero h1{font-size:clamp(36px,9vw,72px);letter-spacing:-.01em;margin-bottom:18px}
+.hero h1 em{font-style:normal;color:var(--acc)}
+.hero p{font-size:clamp(17px,2.6vw,20px);color:var(--mute);max-width:600px;margin-bottom:28px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px}
+.proof{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:36px;padding-top:24px;border-top:1px solid var(--line);color:var(--mute);font-size:14px}
+.proof b{color:var(--ink);font-weight:600}
+
+/* reels */
+.reels{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px}
+@media(max-width:900px){
+  .reels{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-16px;padding:0 16px 8px;scrollbar-width:none}
+  .reels::-webkit-scrollbar{display:none}
+  .reel{flex:0 0 68%;scroll-snap-align:center}
+}
+.reel{position:relative}
+.reel .frame{position:relative;aspect-ratio:9/16;border-radius:var(--r);overflow:hidden;background:var(--card);cursor:pointer}
+.reel video{width:100%;height:100%;object-fit:cover}
+.reel .play{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(transparent 55%,rgba(0,0,0,.55));transition:opacity .2s}
+.reel .play i{width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center}
+.reel .play i::after{content:"";border-style:solid;border-width:10px 0 10px 16px;border-color:transparent transparent transparent #111;margin-left:4px}
+.reel.on .play{opacity:0;pointer-events:none}
+.reel h3{font-size:16px;margin:12px 0 2px}
+.reel p{font-size:14px;color:var(--mute);line-height:1.6}
+.hint{font-size:13px;color:var(--mute);margin-top:10px}
+@media(min-width:901px){.hint{display:none}}
+
+/* posts */
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px}
+@media(max-width:700px){.posts{grid-template-columns:repeat(2,1fr);gap:8px}}
+.posts img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;background:var(--card)}
+
+/* logos */
+.logos{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+@media(max-width:700px){.logos{grid-template-columns:1fr}}
+.logo-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.logo-card img{width:100%}
+.logo-card div{padding:14px 18px;font-size:14px;color:var(--mute)}
+.logo-card b{color:var(--ink);display:block;font:700 16px Alexandria;margin-bottom:2px}
+
+/* site case */
+.case{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;background:var(--bg2);border:1px solid var(--line);border-radius:28px;padding:40px}
+@media(max-width:800px){.case{grid-template-columns:1fr;padding:24px;gap:28px}}
+.case ul{list-style:none;margin:20px 0 26px;display:grid;gap:10px}
+.case li{padding-right:26px;position:relative}
+.case li::before{content:"";position:absolute;right:0;top:.62em;width:12px;height:12px;border-radius:3px;background:var(--acc)}
+.shots{position:relative;padding-bottom:12%}
+.shots .desk{border-radius:12px;border:1px solid var(--line);box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.shots .phone{position:absolute;bottom:0;left:-4%;width:36%;border-radius:18px;border:5px solid #000;box-shadow:0 20px 40px rgba(0,0,0,.5)}
+
+/* services */
+.svc{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:32px}
+@media(max-width:700px){.svc{grid-template-columns:1fr}}
+.svc article{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;display:flex;flex-direction:column}
+.svc article.top{border-color:var(--acc);position:relative}
+.tag{position:absolute;top:-12px;left:20px;background:var(--acc);color:var(--acc-ink);font:700 12px "IBM Plex Sans Arabic";padding:4px 12px;border-radius:999px}
+.svc h3{font-size:20px;margin-bottom:6px}
+.svc .what{color:var(--mute);font-size:15px;margin-bottom:16px}
+.price{font:800 30px Alexandria;margin-bottom:2px}
+.price small{font:500 14px "IBM Plex Sans Arabic";color:var(--mute)}
+.svc ul{list-style:none;margin:14px 0 20px;display:grid;gap:6px;font-size:15px;flex:1}
+.svc li::before{content:"✓";color:var(--acc);margin-left:8px;font-weight:700}
+.note{color:var(--mute);font-size:14px;margin-top:18px}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;counter-reset:s}
+@media(max-width:700px){.steps{grid-template-columns:1fr}}
+.steps div{border-top:2px solid var(--line);padding-top:18px;counter-increment:s}
+.steps div::before{content:counter(s,arabic-indic);font:800 34px Alexandria;color:var(--acc);display:block;line-height:1;margin-bottom:10px}
+.steps h3{font-size:18px;margin-bottom:4px}
+.steps p{color:var(--mute);font-size:15px}
+
+/* final */
+.final{text-align:center;background:var(--acc);color:var(--acc-ink);border-radius:28px;padding:56px 24px}
+.final h2{font-size:clamp(28px,6vw,46px);margin-bottom:12px}
+.final p{max-width:520px;margin:0 auto 26px;font-size:17px}
+footer{padding:36px 0 110px;color:var(--mute);font-size:13px;text-align:center}
+
+/* floating */
+.fab{position:fixed;bottom:18px;left:18px;z-index:30;width:58px;height:58px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.fab svg{width:30px;height:30px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top" data-name>عمر<span>.</span></a>
+    <div class="navlinks">
+      <a href="#reels">ريلز</a><a href="#posts">بوستات</a><a href="#site">مواقع</a><a href="#prices">الأسعار</a>
+    </div>
+    <a class="btn btn-wa btn-sm" data-wa href="#">كلّمني واتساب</a>
+  </div>
+</nav>
+
+<main id="top">
+<header class="hero wrap">
+  <span class="kicker">ريلز · بوستات · لوجو · مواقع للمحلات</span>
+  <h1>إعلانات بتجيب <em>طلبات</em>،<br>مش بس شكل حلو.</h1>
+  <p>بعمل لمحلك ريلز بصوت مصري أو خليجي، وبوستات للعروض، ولوجو، وموقع يستقبل الطلبات. إنت بتركّز في البيع، والمحتوى عليّا.</p>
+  <div class="cta-row">
+    <a class="btn btn-wa" data-wa href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1a17 17 0 0 1-1.8-.7 13.6 13.6 0 0 1-5.2-4.6c-.4-.5-1.2-1.6-1.2-3.1 0-1.4.8-2.2 1-2.5.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.6 2.1 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 .9c.3.1.5.2.5.3.1.2.1.8-.1 1.5Z"/></svg>ابعتلي على واتساب</a>
+    <a class="btn btn-ghost" href="#reels">شوف الشغل</a>
+  </div>
+  <div class="proof">
+    <span><b>+١٥</b> ريل وبوست لمحل عطور واحد</span>
+    <span><b>صوت بشري</b> مصري أو سعودي</span>
+    <span><b>تعديلات</b> لحد ما ترضى</span>
+  </div>
+</header>
+
+<section id="reels">
+  <div class="wrap">
+    <span class="kicker">ريلز موشن</span>
+    <h2 class="h2">ريل بيوقّف الصباع عن السكرول</h2>
+    <p class="lead">فكرة، وصوت، ومزيكا، وحركة. كل ريل معمول عشان يقول حاجة واحدة ويخلّي الزبون يطلب.</p>
+    <div class="reels">
+      <div class="reel"><div class="frame"><video src="m/reel-qr.mp4" poster="m/reel-qr.webp" playsinline preload="none"></video><div class="play"><i></i></div></div>
+        <h3>«في كل حتة»</h3><p>ريل كوميدي بصوت مصري: الكيو آر بتاع المحل لازق في المترو والمكتب والفرح.</p></div>
+      <div class="reel"><div class="frame"><video src="m/reel-pain.mp4" poster="m/reel-pain.webp" playsinline preload="none"></video><div class="play"><i></i></div></div>
+        <h3>«مبلغ وقدره؟»</h3><p>إعلان بيبدأ بمشكلة الزبون (السعر) وبيقفل بالحل والعرض.</p></div>
+      <div class="reel"><div class="frame"><video src="m/reel-intro.mp4" poster="m/reel-intro.webp" playsinline preload="none"></video><div class="play"><i></i></div></div>
+        <h3>تعريف بالبراند</h3><p>ريل بيشرح المحل والموقع وإزاي تطلب، في أقل من دقيقة.</p></div>
+      <div class="reel"><div class="frame"><video src="m/reel-friday.mp4" poster="m/reel-friday.webp" playsinline preload="none"></video><div class="play"><i></i></div></div>
+        <h3>عروض الجمعة البيضاء</h3><p>ريل عرض سريع ١٥ ثانية، جاهز للستوري والإعلان الممول.</p></div>
+    </div>
+    <p class="hint">← اسحب عشان تشوف الباقي</p>
+  </div>
+</section>
+
+<section id="posts" style="padding-top:24px">
+  <div class="wrap">
+    <span class="kicker">بوستات وستوريز</span>
+    <h2 class="h2">بوست لكل منتج وكل عرض</h2>
+    <p class="lead">شكل ثابت للبراند، يخلّي حسابك باين محترم من أول نظرة.</p>
+    <div class="posts">
+      <img loading="lazy" src="m/post-9pm.webp" alt="بوست مجموعة 9PM">
+      <img loading="lazy" src="m/post-hawas.webp" alt="بوست هواس آيس">
+      <img loading="lazy" src="m/post-friday.webp" alt="بوست عروض الجمعة البيضاء">
+      <img loading="lazy" src="m/post-match.webp" alt="بوست عرض ٣ بسعر ٢">
+      <img loading="lazy" src="m/post-dkhoon.webp" alt="بوست عطور دخون">
+      <img loading="lazy" src="m/post-branch.webp" alt="بوست افتتاح الفرع الجديد">
+    </div>
+  </div>
+</section>
+
+<section id="logos" style="padding-top:24px">
+  <div class="wrap">
+    <span class="kicker">لوجوهات</span>
+    <h2 class="h2">هوية تتعرف من بعيد</h2>
+    <div class="logos">
+      <div class="logo-card"><img loading="lazy" src="m/logo-taif.webp" alt="اختيارات لوجو طيف"><div><b>طيف للعطور</b>٦ اتجاهات للوجو بالخط العربي، من الكلاسيكي للمودرن.</div></div>
+      <div class="logo-card"><img loading="lazy" src="m/logo-cartridge.webp" alt="اختيارات لوجو كارتريدج"><div><b>كارتريدج</b>لوجو لمحل ألعاب فيديو، بطابع نيون وجيمنج.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="site">
+  <div class="wrap">
+    <div class="case">
+      <div>
+        <span class="kicker">موقع لمحلك</span>
+        <h2 class="h2">موقع بيستقبل الطلبات لوحده</h2>
+        <p class="lead">موقع «طيف» للعطور: الزبون يختار ويحط في السلة ويبعت الطلب، وصاحب المحل يتابع كل الطلبات من لوحة تحكم.</p>
+        <ul>
+          <li>عربي وإنجليزي، ومعمول للموبايل الأول</li>
+          <li>سلة وعروض تلقائية زي «٣ بسعر ٢»</li>
+          <li>لوحة طلبات وفواتير لصاحب المحل</li>
+          <li>استضافة ببلاش، من غير مصاريف شهرية</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://omaraboeldahab09.github.io/perfumebytaif/" target="_blank" rel="noopener">افتح الموقع ↗</a>
+      </div>
+      <div class="shots">
+        <img class="desk" loading="lazy" src="m/site-desktop.webp" alt="موقع طيف على الكمبيوتر">
+        <img class="phone" loading="lazy" src="m/site-mobile.webp" alt="موقع طيف على الموبايل">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="prices">
+  <div class="wrap">
+    <span class="kicker">الأسعار</span>
+    <h2 class="h2">ابدأ بالحاجة اللي محتاجها</h2>
+    <p class="lead">أسعار بداية، والسعر النهائي حسب الشغل. كلّمني وأقولك بالظبط.</p>
+    <div class="svc">
+      <article class="top"><span class="tag">الأكتر طلبًا</span>
+        <h3>باقة المحتوى الشهرية</h3>
+        <p class="what">محتوى حسابك كله عليّا طول الشهر.</p>
+        <div class="price">من ٢٠٠$ <small>/ شهر</small></div>
+        <ul><li>٤ ريلز موشن بصوت</li><li>٨ بوستات وستوريز للعروض</li><li>أفكار وكابشن لكل بوست</li><li>تسليم كل أسبوع</li></ul>
+        <a class="btn btn-wa" data-wa data-msg="عايز أعرف تفاصيل الباقة الشهرية" href="#">اسأل عن الباقة</a>
+      </article>
+      <article>
+        <h3>ريل واحد بصوت</h3>
+        <p class="what">لعرض، أو منتج جديد، أو افتتاح.</p>
+        <div class="price">من ٥٠$</div>
+        <ul><li>فكرة وسكريبت</li><li>صوت مصري أو خليجي</li><li>مقاس ريلز وستوري</li><li>تعديلين</li></ul>
+        <a class="btn btn-ghost" data-wa data-msg="عايز ريل لمحلي" href="#">اطلب ريل</a>
+      </article>
+      <article>
+        <h3>موقع للمحل</h3>
+        <p class="what">زي موقع طيف، باسمك ومنتجاتك.</p>
+        <div class="price">من ٣٠٠$</div>
+        <ul><li>صفحة منتجات وسلة</li><li>الطلبات توصلك واتساب أو انستجرام</li><li>لوحة متابعة الطلبات</li><li>استضافة ببلاش</li></ul>
+        <a class="btn btn-ghost" data-wa data-msg="عايز موقع لمحلي" href="#">اطلب موقع</a>
+      </article>
+      <article>
+        <h3>لوجو وهوية</h3>
+        <p class="what">لوجو وألوان وخطوط ثابتة لكل حاجة.</p>
+        <div class="price">من ٧٠$</div>
+        <ul><li>٣ لـ ٦ اتجاهات تختار منهم</li><li>نسخة شفافة لكل الاستخدامات</li><li>قالب بوست بالهوية الجديدة</li></ul>
+        <a class="btn btn-ghost" data-wa data-msg="عايز لوجو لمحلي" href="#">اطلب لوجو</a>
+      </article>
+    </div>
+    <p class="note">أول مرة نشتغل سوا؟ ابعتلي اسم محلك وأعملك فكرة ريل تجريبية ببلاش.</p>
+  </div>
+</section>
+
+<section style="padding-top:24px">
+  <div class="wrap">
+    <span class="kicker">إزاي بنشتغل</span>
+    <h2 class="h2">٣ خطوات وبس</h2>
+    <div class="steps">
+      <div><h3>ابعتلي على واتساب</h3><p>اسم المحل، وإيه اللي عايز تبيعه، وصور المنتجات لو عندك.</p></div>
+      <div><h3>أبعتلك الفكرة</h3><p>سكريبت وشكل مبدئي خلال يوم، وتقولي رأيك قبل ما أكمّل.</p></div>
+      <div><h3>تستلم وتنشر</h3><p>الشغل جاهز للنشر، وبنعدّل لحد ما يبقى زي ما إنت عايز.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="final">
+      <h2>محلك يستاهل إعلان أحسن.</h2>
+      <p>ابعتلي اسم محلك دلوقتي، وأبعتلك فكرة ريل معمولة مخصوص ليك.</p>
+      <a class="btn" style="background:#121110;color:#f3ede3" data-wa href="#">ابعتلي على واتساب</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><span data-name>عمر</span> · ريلز وتصميم للمحلات</footer>
+
+<a class="fab" data-wa href="#" aria-label="واتساب"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1a17 17 0 0 1-1.8-.7 13.6 13.6 0 0 1-5.2-4.6c-.4-.5-1.2-1.6-1.2-3.1 0-1.4.8-2.2 1-2.5.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.6 2.1 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 .9c.3.1.5.2.5.3.1.2.1.8-.1 1.5Z"/></svg></a>
+
+<script>
+/* ===== غيّر دول بس ===== */
+const WHATSAPP = "";            // رقم الواتساب بكود الدولة من غير + أو مسافات، مثلًا 201012345678
+const DEFAULT_MSG = "أهلًا، شفت البورتفوليو بتاعك وعايز أتكلم عن إعلانات لمحلي";
+/* ======================= */
+
+document.querySelectorAll("[data-wa]").forEach(a=>{
+  const msg = a.dataset.msg || DEFAULT_MSG;
+  a.href = WHATSAPP ? `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}` : "#prices";
+  a.target = WHATSAPP ? "_blank" : "";
+  a.rel = "noopener";
+});
+
+document.querySelectorAll(".reel").forEach(r=>{
+  const v = r.querySelector("video");
+  r.querySelector(".frame").addEventListener("click",()=>{
+    if(v.paused){
+      document.querySelectorAll(".reel video").forEach(o=>{ if(o!==v){o.pause();o.closest(".reel").classList.remove("on");} });
+      v.play(); r.classList.add("on"); v.controls = true;
+    }
+  });
+  v.addEventListener("pause",()=>{ if(v.ended || v.currentTime===0) r.classList.remove("on"); });
+  v.addEventListener("ended",()=>{ r.classList.remove("on"); v.controls=false; v.currentTime=0; });
+});
+</script>
+</body>
+</html>
