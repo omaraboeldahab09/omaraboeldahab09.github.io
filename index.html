@@ -8,7 +8,7 @@
 <meta property="og:title" content="عمر | إعلانات بتجيب طلبات">
 <meta property="og:description" content="ريلز بصوت، بوستات، لوجوهات ومواقع لمحلك.">
 <meta property="og:image" content="m/og.jpg">
-<meta name="theme-color" content="#f7f1e9">
+<meta name="theme-color" content="#0d0d0d">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Alexandria:wght@600;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
@@ -17,16 +17,12 @@ try{const t=localStorage.getItem("theme");if(t)document.documentElement.dataset.
 </script>
 <style>
 :root{
-  --bg:#f7f1e9; --bg2:#efe4d3; --card:#fffaf4; --line:#e6d9c6; --ink:#211c18; --mute:#7a6e62;
-  --acc:#b8492b; --acc2:#f6e1d6; --on-acc:#fff; --shadow:0 10px 30px rgba(80,50,20,.08); --wa:#25d366;
+  --bg:#0d0d0d; --bg2:#151515; --card:#1a1a1a; --line:#2a2a2a; --ink:#f5f5f5; --mute:#9a9a9a;
+  --acc:#ff3b2f; --acc2:#3a1512; --on-acc:#fff; --shadow:0 10px 30px rgba(0,0,0,.45); --wa:#25d366;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#171310; --bg2:#1f1a16; --card:#241e19; --line:#3a312a; --ink:#f3ebe1; --mute:#b0a394;
-  --acc:#e06a47; --acc2:#3a2419; --on-acc:#fff; --shadow:0 10px 30px rgba(0,0,0,.35);
-}}
-:root[data-theme="dark"]{
-  --bg:#171310; --bg2:#1f1a16; --card:#241e19; --line:#3a312a; --ink:#f3ebe1; --mute:#b0a394;
-  --acc:#e06a47; --acc2:#3a2419; --on-acc:#fff; --shadow:0 10px 30px rgba(0,0,0,.35);
+:root[data-theme="light"]{
+  --bg:#fafafa; --bg2:#f0f0f0; --card:#ffffff; --line:#e5e5e5; --ink:#111111; --mute:#6b6b6b;
+  --acc:#e6332a; --acc2:#fde3e1; --on-acc:#fff; --shadow:0 10px 30px rgba(0,0,0,.07); --wa:#25d366;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -81,7 +77,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 
 .visual{position:relative;justify-self:center;width:min(340px,82vw)}
 .me{display:flex;justify-content:center;height:clamp(420px,62vh,600px);will-change:transform}
-.me img{height:100%;width:auto;filter:drop-shadow(0 24px 30px rgba(60,30,10,.18))}
+.me img{height:100%;width:auto;filter:drop-shadow(0 24px 30px rgba(0,0,0,.25))}
 .float{position:absolute;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:12px 14px;font-size:13px;line-height:1.5}
 .float b{display:block;font-size:14px}
 .f1{top:20%;right:-4%}
@@ -358,7 +354,7 @@ document.getElementById("form").addEventListener("submit",e=>{
 /* theme */
 document.getElementById("theme").onclick=()=>{
   const r=document.documentElement;
-  const dark = r.dataset.theme ? r.dataset.theme==="dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  const dark = r.dataset.theme !== "light";
   r.dataset.theme = dark ? "light" : "dark";
   try{localStorage.setItem("theme",r.dataset.theme)}catch(e){}
 };
